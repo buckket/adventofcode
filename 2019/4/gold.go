@@ -49,7 +49,7 @@ func nextNumber(n [6]int) ([6]int, error) {
 					double[n[j-1]]--
 				}
 				for _, value := range double {
-					if value > 0 && value % 2 != 0 {
+					if value > 0 && value%2 != 0 {
 						return nextNumber(n)
 					}
 				}

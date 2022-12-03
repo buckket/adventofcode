@@ -55,6 +55,6 @@ func main() {
 		intcode := strings.Split(scanner.Text(), ",")
 		intcode[1] = "12"
 		intcode[2] = "2"
-		fmt.Printf("%s\n",strings.Join(execute(intcode), ","))
+		fmt.Printf("%s\n", strings.Join(execute(intcode), ","))
 	}
 }

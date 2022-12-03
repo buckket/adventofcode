@@ -18,7 +18,7 @@ func createVertices(instructions string) (ver []Vertex, offsetX, offsetY, dimX, 
 	var a, b Vertex
 	var minX, minY, maxX, maxY int
 
-	ver = append(ver, Vertex{X: 0, Y: 0,})
+	ver = append(ver, Vertex{X: 0, Y: 0})
 
 	instr := strings.Split(instructions, ",")
 	for _, vec := range instr {
@@ -28,13 +28,13 @@ func createVertices(instructions string) (ver []Vertex, offsetX, offsetY, dimX, 
 		}
 		switch vec[0] {
 		case 'U':
-			b = Vertex{X: a.X, Y: a.Y + l,}
+			b = Vertex{X: a.X, Y: a.Y + l}
 		case 'D':
-			b = Vertex{X: a.X, Y: a.Y - l,}
+			b = Vertex{X: a.X, Y: a.Y - l}
 		case 'R':
-			b = Vertex{X: a.X + l, Y: a.Y,}
+			b = Vertex{X: a.X + l, Y: a.Y}
 		case 'L':
-			b = Vertex{X: a.X - l, Y: a.Y,}
+			b = Vertex{X: a.X - l, Y: a.Y}
 		}
 
 		if b.X < minX {
