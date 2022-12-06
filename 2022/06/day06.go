@@ -40,7 +40,7 @@ func findStart(input io.Reader, distinctChars int) string {
 		}
 
 		// Solution 2
-		// O(len(signal)
+		// O(len(signal))
 		var unique int
 		keys := make(map[uint8]int)
 
