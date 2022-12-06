@@ -2,7 +2,9 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
+	"io"
 	"os"
 	"regexp"
 	"strconv"
@@ -36,10 +38,10 @@ func (s Stacks) Move(amount, old, new int) {
 	}
 }
 
-func main() {
+func Common(input io.Reader, single bool) string {
 	var lines []string
 
-	scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(input)
 	for scanner.Scan() {
 		line := scanner.Text()
 		if len(line) == 0 {
@@ -81,7 +83,14 @@ func main() {
 		from, _ := strconv.Atoi(matches[2])
 		to, _ := strconv.Atoi(matches[3])
 
-		stacks.Move(amount, from-1, to-1)
+		if single {
+			stacks.Move(amount, from-1, to-1)
+
+		} else {
+			for i := 0; i < amount; i++ {
+				stacks.Move(1, from-1, to-1)
+			}
+		}
 	}
 
 	var output string
@@ -90,5 +99,28 @@ func main() {
 		output += x
 
 	}
-	fmt.Printf("%s\n", output)
+
+	return fmt.Sprintf("%s", output)
+}
+
+func Part1(input io.Reader) string {
+	return Common(input, false)
+}
+
+func Part2(input io.Reader) string {
+	return Common(input, true)
+}
+
+func main() {
+	var partFlag = flag.Int("p", 0, "select part")
+	flag.Parse()
+
+	switch *partFlag {
+	case 1:
+		fmt.Println(Part1(os.Stdin))
+	case 2:
+		fmt.Println(Part2(os.Stdin))
+	default:
+		fmt.Println(fmt.Errorf("unknown part number %d", *partFlag))
+	}
 }
