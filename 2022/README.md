@@ -1,9 +1,10 @@
-To run pipe test input into program:
+To run a specific solution pipe the given input into the program:
 ```shell
-go run a.go < real_input
-go run b.go < real_input
+go run . -p=1 < real_input
+go run . -p=2 < real_input
 ```
 
-ToDo:
-- [ ] Automate testing
-- [ ] Becnhmarks
+Or run all included tests via:
+```shell
+make test
+```
