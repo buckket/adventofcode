@@ -30,8 +30,8 @@ func TestPart2(t *testing.T) {
 		filename string
 		expected string
 	}{
-		{"test_input", "0"},
-		{"real_input", "0"},
+		{"test_input", ""},
+		{"real_input", ""},
 	}
 
 	for _, e := range tests {

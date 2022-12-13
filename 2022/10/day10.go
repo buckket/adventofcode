@@ -89,7 +89,6 @@ func Part2(input io.Reader) string {
 	go cpu.Exec()
 
 	var clockCounter int
-	var solution int
 	var x int
 
 	clockCounter++
@@ -108,7 +107,7 @@ func Part2(input io.Reader) string {
 			clockCounter++
 		case x = <-databus:
 		case <-done:
-			return fmt.Sprintf("%d", solution)
+			return ""
 		}
 	}
 }
