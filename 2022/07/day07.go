@@ -129,10 +129,7 @@ func (f *Filesystem) Command(lineCache []string) {
 	}
 }
 
-func Part1(input io.Reader) string {
-	fs := Filesystem{}
-	fs.Init()
-
+func ProcessInput(input io.Reader, fs *Filesystem) {
 	var lineCache []string
 
 	scanner := bufio.NewScanner(input)
@@ -147,28 +144,22 @@ func Part1(input io.Reader) string {
 	}
 	fs.Command(lineCache)
 	fs.RootNode.Print(0)
+}
+
+func Part1(input io.Reader) string {
+	fs := &Filesystem{}
+	fs.Init()
+
+	ProcessInput(input, fs)
 
 	return fmt.Sprintf("%d", fs.RootNode.FindDirsPart1(0))
 }
 
 func Part2(input io.Reader) string {
-	fs := Filesystem{}
+	fs := &Filesystem{}
 	fs.Init()
 
-	var lineCache []string
-
-	scanner := bufio.NewScanner(input)
-	for scanner.Scan() {
-		line := scanner.Text()
-		lineCache = append(lineCache, line)
-		if !strings.HasPrefix(line, "$") {
-			continue
-		}
-		fs.Command(lineCache)
-		lineCache = []string{line}
-	}
-	fs.Command(lineCache)
-	fs.RootNode.Print(0)
+	ProcessInput(input, fs)
 
 	biggerThan := 30000000 - (70000000 - fs.RootNode.Size)
 	return fmt.Sprintf("%d", fs.RootNode.FindDirsPart2(biggerThan, fs.RootNode.Size))

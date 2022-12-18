@@ -38,7 +38,7 @@ func (s Stacks) Move(amount, old, new int) {
 	}
 }
 
-func Common(input io.Reader, single bool) string {
+func ProcessInput(input io.Reader, single bool) string {
 	var lines []string
 
 	scanner := bufio.NewScanner(input)
@@ -104,11 +104,11 @@ func Common(input io.Reader, single bool) string {
 }
 
 func Part1(input io.Reader) string {
-	return Common(input, false)
+	return ProcessInput(input, false)
 }
 
 func Part2(input io.Reader) string {
-	return Common(input, true)
+	return ProcessInput(input, true)
 }
 
 func main() {

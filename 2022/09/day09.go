@@ -80,12 +80,7 @@ func (r *Rope) Move(dir string) {
 	r.Visited[r.Points[len(r.Points)-1].String()] = true
 }
 
-func Part1(input io.Reader) string {
-	rope := Rope{
-		Points:  make([]Point, 2),
-		Visited: map[string]bool{},
-	}
-
+func ProcessInput(input io.Reader, rope *Rope) {
 	scanner := bufio.NewScanner(input)
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -95,26 +90,23 @@ func Part1(input io.Reader) string {
 			rope.Move(command[0])
 		}
 	}
+}
 
+func Part1(input io.Reader) string {
+	rope := &Rope{
+		Points:  make([]Point, 2),
+		Visited: map[string]bool{},
+	}
+	ProcessInput(input, rope)
 	return fmt.Sprintf("%d", len(rope.Visited))
 }
 
 func Part2(input io.Reader) string {
-	rope := Rope{
+	rope := &Rope{
 		Points:  make([]Point, 10),
 		Visited: map[string]bool{},
 	}
-
-	scanner := bufio.NewScanner(input)
-	for scanner.Scan() {
-		line := scanner.Text()
-		command := strings.Split(line, " ")
-		x, _ := strconv.Atoi(command[1])
-		for i := 0; i < x; i++ {
-			rope.Move(command[0])
-		}
-	}
-
+	ProcessInput(input, rope)
 	return fmt.Sprintf("%d", len(rope.Visited))
 }
 

@@ -20,7 +20,7 @@ func countUnique(str string) int {
 	return unique
 }
 
-func findStart(input io.Reader, distinctChars int) string {
+func ProcessInput(input io.Reader, distinctChars int) string {
 	scanner := bufio.NewScanner(input)
 	for scanner.Scan() {
 		signal := scanner.Text()
@@ -64,11 +64,11 @@ func findStart(input io.Reader, distinctChars int) string {
 }
 
 func Part1(input io.Reader) string {
-	return findStart(input, 4)
+	return ProcessInput(input, 4)
 }
 
 func Part2(input io.Reader) string {
-	return findStart(input, 14)
+	return ProcessInput(input, 14)
 }
 
 func main() {
