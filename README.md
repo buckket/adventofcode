@@ -2,6 +2,12 @@
 
 Solutions for [AoC](https://adventofcode.com/) 🎄🎅
 
+## 2023
+
+| Day | Go  | Notes      |
+|:---:|:---:|------------|
+|  1  | ⭐⭐  | Substrings |
+
 ## 2022
 
 | Day | Go  | Notes                |
